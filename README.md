@@ -1,0 +1,147 @@
+
+## :dart: About ##
+
+
+Flashcard application for studying, allowing users to create, list, edit, delete, and review flashcards.
+The project is split into backend (PHP + SQLite) and frontend (React + Vite + Tailwind), running with Docker Compose.
+## :sparkles: Features ##
+
+:heavy_check_mark: Create (front, back, color);\
+:heavy_check_mark: List all;\
+:heavy_check_mark: Edit and delete;\
+:heavy_check_mark: Review flashcards ;
+
+
+## :memo: Architectural Decisions: 
+The backend was intentionally developed without relying on a heavy framework. At first, I considered using PHP Slim, but given its obsolescence, I decided to build the backend in pure PHP to keep it lightweight and maintain full control, while focusing more effort on the frontend.
+
+For the UI, I chose TailwindCSS instead of Bootstrap. Tailwind provides greater flexibility, a modern utility-first approach, and allowed me to sharpen my skills with a framework that is more widely adopted in recent projects.
+
+Data persistence is handled with SQLite, a lightweight relational database, accessed through PDO for simplicity and portability.
+
+For testing, I integrated PHPUnit, a familiar tool that provides reliable unit testing for the PHP ecosystem.
+
+The project is structured into clear and maintainable modules:
+
+Backend
+
+- backend/cli/cli.php – command line interface
+- backend/src/Models/ – data models
+- backend/src/Database/ – database connection
+- backend/src/Router/ – request routing
+- backend/tests/ – unit tests
+
+Frontend
+
+- src/api.ts – API integration
+- src/App.tsx – main application component
+- src/index.css – global styles
+- src/main.tsx – React entry point
+- src/components/ – reusable UI components
+
+Both backend and frontend include their own Dockerfiles, ensuring environment consistency and smooth setup.
+
+
+## API Endpoints
+GET /flashcards → list all
+GET /flashcards/review → return one flashcard
+POST /flashcards → create ({ front, back, color })
+PUT /flashcards/{id} → update
+DELETE /flashcards/{id} → delete
+
+## Layout
+![alt text](https://github.com/edunavarro17/flashcard/blob/main/flashcard.png)
+
+## Run all tests:
+
+```bash
+docker exec -it flashcard-backend phpunit tests --testdox
+```
+## Run a specific test:
+
+```bash
+docker exec -it flashcard-backend phpunit tests/FlashcardTest.php --filter testCreateFlashcard --testdox
+```
+
+## CLI
+
+```bash
+docker exec -it flashcard-backend php cli/cli.php 
+- list
+- create
+- update <id>
+- delete <id>
+```
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+Frontend: React 18, Vite, TailwindCSS, Axios
+- [Backend: Backend: PHP 8.2, SQLite, PDO, PHPUnit]
+- [Frontend: React 18, Vite, TailwindCSS, Axios
+]
+- [Infrastructure: Docker & Docker Compose
+]
+
+## Project Structure
+```
+flashcard/
+├── backend/
+│   ├── cli/cli.php
+│   ├── src/
+│   │   ├── Database.php
+│   │   ├── Models/Flashcard.php
+│   │   └── Router.php
+│   ├── public/index.php
+│   ├── tests/FlashcardTest.php
+│   └── Dockerfile
+├── frontend/
+│   ├── src/
+│   │   ├── api.ts
+│   │   ├── App.tsx
+│   │   └── components/
+│   │       ├── FlashcardForm.tsx
+│   │       ├── FlashcardList.tsx
+│   │       └── Flashcard.tsx
+│   └── Dockerfile
+├── docker-compose.yml
+└── README.md
+```
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+
+# Clone this project
+$ git clone https://github.com/edunavarro17/flashcard.git
+
+# Access
+$ cd flashcard
+
+# Run the project
+$ docker-compose up --build
+
+# The server will initialize in the 
+Frontend: http://localhost:5173
+Backend API: http://localhost:8080
+```
+## Future Work:
+- Authentication
+- Organize per category of the card
+- Optional include an image in the front or back
+- Feature to create a game of cards per user
+
+## :memo: License ##
+
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
+
+
+Made with :heart: by <a href="https://github.com/{{github}}" target="_blank">edunavarro17</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
