@@ -140,7 +140,7 @@ Backend API: http://localhost:8080
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
 
 
-Made with :heart: by <a href="https://github.com/{{github}}" target="_blank">edunavarro17</a>
+Made with :heart: by <a href="https://github.com/edunavarro17" target="_blank">edunavarro17</a>
 
 &#xa0;
 
